@@ -10,8 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -31,7 +30,9 @@ public class WeatherForecastIntegrationTest {
         mockMvc.perform(get("/data?city=London").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("cityName", is("London")));
+                .andExpect(jsonPath("nightTemp", notNullValue()))
+                .andExpect(jsonPath("dayTemp", notNullValue()))
+                .andExpect(jsonPath("pressure", notNullValue()));
 
         mockMvc.perform(get("/data?city=Londono").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())

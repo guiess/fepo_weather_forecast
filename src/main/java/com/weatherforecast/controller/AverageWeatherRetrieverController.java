@@ -16,7 +16,7 @@ public class AverageWeatherRetrieverController {
     WeatherForecastService weatherForecastService;
 
     @RequestMapping(method= RequestMethod.GET)
-    public WeatherForecastResponse getWeatherForecast(@PathVariable(value = "city") @NotEmpty String city){
+    public WeatherForecastResponse getWeatherForecast(@RequestParam(value = "city") @NotEmpty String city){
         return weatherForecastService.getWeatherForecastForCity(city);
     }
 }

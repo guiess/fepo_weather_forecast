@@ -28,7 +28,7 @@ public class WeatherForecastService {
     }
 
     public WeatherForecastResponse getWeatherForecastForCity(String city){
-        return new WeatherForecastProcessor().process(city, retrieveData(city));
+        return new WeatherForecastProcessor().process(retrieveData(city));
     }
 
     private String retrieveData(String city){

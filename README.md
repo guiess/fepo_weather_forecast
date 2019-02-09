@@ -24,4 +24,4 @@ in the command window/far navigate to the root folder and execute the following 
 #Reasoning and Motivations behind the code
 Actually, I'm not sure what is expected to be written here.  
 I'm trying to use the most common approaches that are enough for the given task without any additional complexity (at least on the way I understand this =))
-
+Also used Spring Boot in order to simplify the application by not necessary for the current task configuration classes

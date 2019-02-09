@@ -13,7 +13,7 @@ import java.util.TimeZone;
 
 public class WeatherForecastProcessor {
 
-    public WeatherForecastResponse process(String city, String response){
+    public WeatherForecastResponse process(String response){
         LocalDateTime currentDate = LocalDateTime.now();
         LocalDateTime endDate = LocalDate.now().plusDays(4).atStartOfDay();
 
@@ -48,8 +48,7 @@ public class WeatherForecastProcessor {
                     totalTmpNight += tmp;
             }
 
-            return new WeatherForecastResponse(city,
-                    totalTmpNight / (forecastsAmount - dayTempAmount),
+            return new WeatherForecastResponse(totalTmpNight / (forecastsAmount - dayTempAmount),
                     totalTmpDay / dayTempAmount,
                     totalPressure / forecastsAmount);
         }
