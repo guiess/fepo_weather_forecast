@@ -21,10 +21,10 @@ public class WeatherForecastService {
 
     private static RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${weather.api.endpoint}")
+    @Value("${weather.api.endpoint:stub}")
     private String apiEndpoint;
 
-    @Value("${weather.api.appid}")
+    @Value("${weather.api.appid:stub}")
     private String appid;
 
     private final String urlFormat = "http://%s/data/2.5/forecast?appid=%s&mode=json&units=metric&q=%s";
@@ -35,13 +35,14 @@ public class WeatherForecastService {
     }
 
     public WeatherForecastResponse getWeatherForecastForCity(String city){
-        System.out.println(getApiUrl(city));
-        String response = restTemplate.getForObject(getApiUrl(city), String.class);
-        System.out.println(response);
-        return processResponse(city, response);
+        return processResponse(city, retrieveData(city));
     }
 
-    private WeatherForecastResponse processResponse(String city, String response){
+    public String retrieveData(String city){
+        return restTemplate.getForObject(getApiUrl(city), String.class);
+    }
+
+    public WeatherForecastResponse processResponse(String city, String response){
         LocalDateTime currentDate = LocalDateTime.now();
         LocalDateTime endDate = LocalDate.now().plusDays(4).atStartOfDay();
 
