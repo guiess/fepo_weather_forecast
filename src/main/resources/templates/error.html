@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Weather Forecast Error Page</title></head>
+<body>
+<h2>Some error happened</h2>
+<table>
+    <tr>
+        <td>Error Code</td>
+        <td th:text="${errorCode}"/>
+    </tr>
+    <tr>
+        <td>Message</td>
+        <td th:text="${message}"/>
+    </tr>
+
+    <tr>
+        <td>StackTrace</td>
+        <td><li th:each="ste : ${stackTrace}" th:remove="tag"><span
+            th:utext="${ste}" th:remove="tag">${ste}</span><br></li>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>
