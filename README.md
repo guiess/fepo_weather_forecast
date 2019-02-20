@@ -1,6 +1,20 @@
 # fepo_weather_forecast
 Weather forecast test study application.
 
+The task:  
+Using Java (1.8 or newer), create an API that will retrieve weather metrics of a specific city.
+Please use https://openweathermap.org/ to create a free account and retrieve the data for this
+case study.
+
+- The API should expose a “/data” endpoint to retrieve the averages  
+- The “/data” endpoint should return a JSON object that gives the averages of the
+following metrics:
+  - Average temperature (in Celsius) of the next 3 days from today’s date for Day
+time (06:00 – 18:00) and Night time (18:00 – 06:00).
+  - Average of pressure for the next 3 days from today’s date.
+- The “/data” endpoint must include a CITY parameter containing the city’s name as the
+input for the correct response.
+
 #Prerequisites
 in the application.properties file, located in the following folder  
 \weather_forecast\src\main\resources  
@@ -20,8 +34,3 @@ after the application is started use the following URL
 in the command window/far navigate to the root folder and execute the following command
 >gradle test
 
-
-#Reasoning and Motivations behind the code
-Actually, I'm not sure what is expected to be written here.  
-I'm trying to use the most common approaches that are enough for the given task without any additional complexity (at least on the way I understand this =))
-Also used Spring Boot in order to simplify the application by not necessary for the current task configuration classes
